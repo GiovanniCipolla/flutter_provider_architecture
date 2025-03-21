@@ -39,6 +39,11 @@ class LoginScreen extends StatelessWidget {
             ),
             // Con il consumer ci mettero in ascolto , quindi ogni volta che avverrà
             // un notify listener si attivera il consumer
+            // NB : Potevano anche non usare il cosumer!
+            // all'inizio della build prendevao il provider cosi :
+            // final provider = context.watch<AuthProvider>();
+            // ma al trigger (notify listener) si ricorstuiva il widget
+            // mentre con il consumer si 'attiva' solo il codice al suo interno
             Consumer<AuthProvider>(
               builder: (context, authProvider, child) {
                 if (authProvider.isLoggedIn) {
